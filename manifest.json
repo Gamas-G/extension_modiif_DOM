@@ -1,0 +1,29 @@
+{
+  "name": "gdtBrowser",
+  "version": "1.1",
+  "description": "gdtBrowser",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "gdtBrowserBack.js",
+	  "type": "module"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": ["gdtBrowser.js"],
+      "matches": ["<all_urls>"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["gdtPieces.js", "gdtBlackList.json"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": ["nativeMessaging", "tabs","activeTab","storage"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
